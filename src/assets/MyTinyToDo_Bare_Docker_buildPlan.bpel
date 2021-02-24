@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process xmlns:ns1="http://siserver.org/wsdl" xmlns:opentoscaAPI="http://opentosca.org/api" xmlns:tns="http://opentosca.org/servicetemplates_buildPlan" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434479="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434488="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434489="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434492="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434671="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434673="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434676="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434678="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434680="http://www.w3.org/2001/XMLSchema" xmlns:xsd1601895434682="http://www.w3.org/2001/XMLSchema" name="MyTinyToDo_Bare_Docker_buildPlan" suppressJoinFailure="no" targetNamespace="http://opentosca.org/servicetemplates_buildPlan" xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+    <extensions>
+        <extension mustUnderstand="yes" namespace="http://www.apache.org/ode/bpel/extensions/bpel4restlight"/>
+    </extensions>
+    <faultHandlers>
+        <catchAll>
+            <sequence>
+                <empty/>
+                <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434676" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('ERROR')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest_setServiceInstanceState_ERROR_1601895434676]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest_setServiceInstanceState_ERROR_1601895434676" uri="$bpelvar[OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+                <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434678" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('FAILED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest_setServiceInstanceState_FAILED_1601895434678]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest_setServiceInstanceState_FAILED_1601895434678" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+                <compensate/>
+                <rethrow/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <partnerLinks>
+        <partnerLink initializePartnerRole="yes" myRole="MyTinyToDo_Bare_Docker_buildPlanProvider" name="client" partnerLinkType="tns:MyTinyToDo_Bare_Docker_buildPlan" partnerRole="MyTinyToDo_Bare_Docker_buildPlanRequester"/>
+    </partnerLinks>
+    <variables>
+        <variable messageType="tns:MyTinyToDo_Bare_Docker_buildPlanRequestMessage" name="input"/>
+        <variable messageType="tns:MyTinyToDo_Bare_Docker_buildPlanResponseMessage" name="output"/>
+        <variable name="relationshipInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="relationInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479" type="xsd1601895434479:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerPort_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineCertificate_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_State_toscaProperty1601895434479" type="xsd:string"/>
+        <variable name="instanceDataAPIUrl1601895434488" type="xsd1601895434488:string"/>
+        <variable name="OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488" type="xsd1601895434488:string"/>
+        <variable name="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488" type="xsd1601895434488:string"/>
+        <variable name="OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488" type="xsd1601895434488:string"/>
+        <variable name="OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488" type="xsd1601895434488:string"/>
+        <variable name="bpel4restlightVarResponse1601895434489" type="xsd1601895434489:anyType"/>
+        <variable element="opentoscaAPI:correlationID" name="bpel4restlightVarRequest1601895434489"/>
+        <variable name="ServiceInstanceCorrelationID1601895434492" type="xsd1601895434492:string"/>
+        <variable name="dockerContainerPortMappings1601895434503_0" type="xsd:string"/>
+        <variable name="dockerContainerFile1601895434505_1" type="xsd:string"/>
+        <variable name="instanceDataLogMsg_1601895434534_10" type="xsd:string"/>
+        <variable element="opentoscaAPI:log" name="logMessage11"/>
+        <variable name="instanceDataLogMsg_1601895434581_20" type="xsd:string"/>
+        <variable element="opentoscaAPI:log" name="logMessage21"/>
+        <variable name="bpel4restlightVarResponse22" type="xsd:anyType"/>
+        <variable name="MyTinyToDoDockerContainer_state_23" type="xsd:string"/>
+        <variable name="instanceDataLogMsg_1601895434618_24" type="xsd:string"/>
+        <variable element="opentoscaAPI:log" name="logMessage25"/>
+        <variable name="MyTinyToDoDockerContainer_state_26" type="xsd:string"/>
+        <variable name="bpel4restlightVarResponse27" type="xsd:anyType"/>
+        <variable name="DockerEngine_state_28" type="xsd:string"/>
+        <variable name="instanceDataLogMsg_1601895434646_29" type="xsd:string"/>
+        <variable element="opentoscaAPI:log" name="logMessage30"/>
+        <variable name="DockerEngine_state_31" type="xsd:string"/>
+        <variable name="bpel4restlightVarResponse32" type="xsd:anyType"/>
+        <variable name="con_17_state_33" type="xsd:string"/>
+        <variable element="opentoscaAPI:CreateRelationshipTemplateInstanceRequest" name="createRelationshipTemplateRequest34"/>
+        <variable name="instanceDataLogMsg_1601895434667_35" type="xsd:string"/>
+        <variable element="opentoscaAPI:log" name="logMessage36"/>
+        <variable name="bpel4restlightVarResponse1601895434671" type="xsd1601895434671:anyType"/>
+        <variable name="bpel4restlightVarRequest1601895434671" type="xsd1601895434671:string"/>
+        <variable name="bpel4restlightVarResponse1601895434673" type="xsd1601895434673:anyType"/>
+        <variable name="bpel4restlightVarRequest1601895434673" type="xsd1601895434673:string"/>
+        <variable name="bpel4restlightVarResponse_setServiceInstanceState_ERROR_1601895434676" type="xsd1601895434676:anyType"/>
+        <variable name="bpel4restlightVarRequest_setServiceInstanceState_ERROR_1601895434676" type="xsd1601895434676:string"/>
+        <variable name="bpel4restlightVarResponse_setServiceInstanceState_FAILED_1601895434678" type="xsd1601895434678:anyType"/>
+        <variable name="bpel4restlightVarRequest_setServiceInstanceState_FAILED_1601895434678" type="xsd1601895434678:string"/>
+        <variable name="bpel4restlightVarResponse1601895434680" type="xsd1601895434680:anyType"/>
+        <variable name="bpel4restlightVarRequest1601895434680" type="xsd1601895434680:string"/>
+        <variable name="bpel4restlightVarResponse1601895434682" type="xsd1601895434682:anyType"/>
+        <variable name="bpel4restlightVarRequest1601895434682" type="xsd1601895434682:string"/>
+    </variables>
+    <sequence>
+        <receive createInstance="yes" name="receiveInput" operation="initiate" partnerLink="client" portType="tns:MyTinyToDo_Bare_Docker_buildPlan" variable="input"/>
+        <assign>
+            <copy>
+                <from>
+                    <literal>80</literal>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerPort_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>get_input: ApplicationPort</literal>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal/>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal/>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>get_input: DockerEngineURL</literal>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal/>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineCertificate_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Running</literal>
+                </from>
+                <to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_State_toscaProperty1601895434479"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal/>
+                </from>
+                <to variable="dockerContainerPortMappings1601895434503_0"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal/>
+                </from>
+                <to variable="dockerContainerFile1601895434505_1"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Executing operation startContainer of NodeTemplate MyTinyToDoDockerContainer</literal>
+                </from>
+                <to variable="instanceDataLogMsg_1601895434534_10"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Executing operation removeContainer of NodeTemplate MyTinyToDoDockerContainer</literal>
+                </from>
+                <to variable="instanceDataLogMsg_1601895434581_20"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Finished with MyTinyToDoDockerContainer of overall topology with steps of 3</literal>
+                </from>
+                <to variable="instanceDataLogMsg_1601895434618_24"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Finished with DockerEngine of overall topology with steps of 3</literal>
+                </from>
+                <to variable="instanceDataLogMsg_1601895434646_29"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>Finished with con_17 of overall topology with steps of 3</literal>
+                </from>
+                <to variable="instanceDataLogMsg_1601895434667_35"/>
+            </copy>
+            <copy>
+                <from>
+                    <literal>
+                        <tns:MyTinyToDo_Bare_Docker_buildPlanResponse>
+                            <tns:selfserviceApplicationUrl>tns:selfserviceApplicationUrl</tns:selfserviceApplicationUrl>
+                            <tns:instanceId>tns:instanceId</tns:instanceId>
+                            <tns:CorrelationID>tns:CorrelationID</tns:CorrelationID>
+                        </tns:MyTinyToDo_Bare_Docker_buildPlanResponse>
+                    </literal>
+                </from>
+                <to part="payload" variable="output"/>
+            </copy>
+        </assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignFromInputToString1601895434488" validate="no">
+    <bpel:copy>
+        <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='instanceDataAPIUrl']/text()]]></bpel:query>
+                </bpel:from>
+        <bpel:to variable="instanceDataAPIUrl1601895434488"/>
+    </bpel:copy>
+</bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceCreateRequest1601895434491" validate="yes">
+	<bpel:copy>
+		<bpel:from>
+			<bpel:literal>
+                        <correlationID xmlns="http://opentosca.org/api">notSet</correlationID>
+                    </bpel:literal>
+		</bpel:from>
+		<bpel:to variable="bpel4restlightVarRequest1601895434489"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from part="payload" variable="input">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='CorrelationID']/text()]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="bpel4restlightVarRequest1601895434489">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[/*[local-name()='correlationID']]]></bpel:query>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:POST accept="application/xml" contenttype="application/xml" request="bpel4restlightVarRequest1601895434489" response="bpel4restlightVarResponse1601895434489" uri="$bpelvar[instanceDataAPIUrl1601895434488]"/>
+</bpel:extensionActivity>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignFromInputToString1601895434493" validate="no">
+    <bpel:copy>
+        <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='CorrelationID']/text()]]></bpel:query>
+                </bpel:from>
+        <bpel:to variable="ServiceInstanceCorrelationID1601895434492"/>
+    </bpel:copy>
+</bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstance1601895434495" validate="no">	
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse1601895434489">
+			<bpel:query xmlns:pp="http://opentosca.org/api/pp" xmlns:xlink="http://www.w3.org/1999/xlink" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(//*[local-name()='url']/text())]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(codepoints-to-string(reverse(string-to-codepoints(substring-before(codepoints-to-string(reverse(string-to-codepoints($OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488))), '/')))))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="instanceDataAPIUrl1601895434488">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(replace($instanceDataAPIUrl1601895434488, '/instances', ''))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(concat($OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488, '/buildplans/', 'MyTinyToDo_Bare_Docker_buildPlan', '/instances/', $ServiceInstanceCorrelationID1601895434492))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488"/>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ApplicationPort']]]></bpel:query>
+                </bpel:from>
+                <bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[$_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479]]></bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='DockerEngineURL']]]></bpel:query>
+                </bpel:from>
+                <bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[$_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479]]></bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignCorrelationID">
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:CorrelationID]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="output">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:CorrelationID]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434671" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('CREATING')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest1601895434671]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest1601895434671" uri="$bpelvar[OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434680" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('RUNNING')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest1601895434680]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest1601895434680" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+        <flow suppressJoinFailure="no">
+            <links>
+                <link name="seqEdge0"/>
+                <link name="seqEdge1"/>
+            </links>
+            <scope name="MyTinyToDoDockerContainer_PROVISIONING_scope">
+                <targets>
+                    <joinCondition>$seqEdge0</joinCondition>
+                    <target linkName="seqEdge0"/>
+                </targets>
+                <partnerLinks>
+                    <partnerLink initializePartnerRole="yes" myRole="Requester" name="InvokePortTypePL5" partnerLinkType="tns:InvokePortTypePLT4" partnerRole="Requestee"/>
+                    <partnerLink initializePartnerRole="yes" myRole="Requester" name="InvokePortTypePL15" partnerLinkType="tns:InvokePortTypePLT14" partnerRole="Requestee"/>
+                </partnerLinks>
+                <variables>
+                    <variable messageType="ns1:invokeOperationAsyncMessage" name="InvokePortTypeinvokeOperationAsyncMessageRequest6"/>
+                    <variable messageType="ns1:invokeResponse" name="CallbackPortTypeinvokeResponseResponse7"/>
+                    <variable messageType="ns1:invokeOperationAsyncMessage" name="InvokePortTypeinvokeOperationAsyncMessageRequest16"/>
+                    <variable messageType="ns1:invokeResponse" name="CallbackPortTypeinvokeResponseResponse17"/>
+                </variables>
+                <correlationSets>
+                    <correlationSet name="InvokePortTypeCorrelationSet9" properties="tns:InvokePortTypeProperty8"/>
+                    <correlationSet name="InvokePortTypeCorrelationSet19" properties="tns:InvokePortTypeProperty18"/>
+                </correlationSets>
+                <faultHandlers>
+                    <catchAll>
+                        <scope name="fault_MyTinyToDoDockerContainer_PROVISIONING_scope">
+                            <sequence name="fault_MyTinyToDoDockerContainer_PROVISIONING_mainSequence">
+                                <sequence name="fault_MyTinyToDoDockerContainer_PROVISIONING_prePhase">
+                                    <empty/>
+                                </sequence>
+                                <sequence name="fault_MyTinyToDoDockerContainer_PROVISIONING_provisioningPhase">
+                                    <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignSetNodeState1601895434622" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('ERROR')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$MyTinyToDoDockerContainer_state_26]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                                    <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="MyTinyToDoDockerContainer_state_26" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/state"/>
+</bpel:extensionActivity>
+                                </sequence>
+                                <sequence name="fault_MyTinyToDoDockerContainer_PROVISIONING_postPhase">
+                                    <rethrow/>
+                                </sequence>
+                            </sequence>
+                            <eventHandlers/>
+                        </scope>
+                    </catchAll>
+                </faultHandlers>
+                <compensationHandler>
+                    <scope name="compensation_MyTinyToDoDockerContainer_PROVISIONING_scope">
+                        <sequence name="compensation_MyTinyToDoDockerContainer_PROVISIONING_mainSequence">
+                            <sequence name="compensation_MyTinyToDoDockerContainer_PROVISIONING_prePhase">
+                                <empty/>
+                            </sequence>
+                            <sequence name="compensation_MyTinyToDoDockerContainer_PROVISIONING_provisioningPhase">
+                                <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="AssignCreateEC2SIRequest" validate="no">
+	<bpel:copy>
+		<bpel:from>
+			<bpel:literal>
+				<impl:invokeOperationAsync xmlns:impl="http://siserver.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<impl:PlanCorrelationID/>
+					<impl:CsarID>MyTinyToDo_Bare_Docker.csar</impl:CsarID>
+					<impl:ServiceInstanceID/>
+					
+					<impl:ServiceTemplateIDNamespaceURI>http://opentosca.org/servicetemplates</impl:ServiceTemplateIDNamespaceURI>
+					<impl:ServiceTemplateIDLocalPart>MyTinyToDo_Bare_Docker</impl:ServiceTemplateIDLocalPart>
+					<impl:InterfaceName>InterfaceDockerEngine</impl:InterfaceName>
+					<impl:NodeTemplateID>DockerEngine</impl:NodeTemplateID>
+
+					<impl:OperationName>removeContainer</impl:OperationName>
+					<impl:ReplyTo/>
+					<impl:MessageID>1601895434572</impl:MessageID>
+					<impl:Params>
+                                                        <impl:Param>
+                                                            <impl:key>DockerEngineURL</impl:key>
+                                                            <impl:value>value</impl:value>
+                                                        </impl:Param>
+                                                        <impl:Param>
+                                                            <impl:key>ContainerID</impl:key>
+                                                            <impl:value>value</impl:value>
+                                                        </impl:Param>
+                                                    </impl:Params>
+
+				</impl:invokeOperationAsync>
+			</bpel:literal>
+		</bpel:from>
+		<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16"/>
+	</bpel:copy>
+	<bpel:copy>
+  <bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="DockerEngineURL"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="ContainerID"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from part="payload" variable="input">
+      <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="CorrelationID"]]]></bpel:query>
+  </bpel:from>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="PlanCorrelationID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from variable="OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="ServiceInstanceID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+
+
+<bpel:copy>
+  	<bpel:from>
+   					<bpel:literal>
+     					<wsa:ReplyTo xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        					<wsa:Address>http://localhost:9763/services/SIServerCallback</wsa:Address>
+     					</wsa:ReplyTo>
+   					</bpel:literal>
+ 				</bpel:from>
+ 				<bpel:to header="ReplyTo" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+ 				</bpel:to>
+			</bpel:copy>
+                                    <bpel:copy>
+            	<bpel:from endpointReference="myRole" partnerLink="InvokePortTypePL15"/>
+            	<bpel:to header="ReplyTo" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+            	                    <bpel:query xmlns:wsa="http://www.w3.org/2005/08/addressing" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[/*[local-name()='Address']]]></bpel:query>
+
+            	</bpel:to>
+            </bpel:copy>
+                                    <bpel:copy>
+	<bpel:from endpointReference="myRole" partnerLink="InvokePortTypePL15"/>
+	<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+		<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="ReplyTo" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                                    <bpel:copy>
+	<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		<![CDATA[concat('DockerEngine:InterfaceDockerEngine:removeContainer:',current-dateTime())]]>
+	</bpel:from>
+	<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest16">
+		<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()="MessageID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                                </bpel:assign>
+                                <bpel:invoke xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" inputVariable="InvokePortTypeinvokeOperationAsyncMessageRequest16" name="invoke_InvokePortTypeinvokeOperationAsyncMessageRequest16" operation="invokeOperationAsync" partnerLink="InvokePortTypePL15" portType="ns1:InvokePortType">
+                                    <bpel:correlations>
+                                        <bpel:correlation initiate="yes" set="InvokePortTypeCorrelationSet19"/>
+                                    </bpel:correlations>
+                                </bpel:invoke>
+                                <bpel:receive xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="receive_CallbackPortTypeinvokeResponseResponse17" operation="callback" partnerLink="InvokePortTypePL15" portType="ns1:CallbackPortType" variable="CallbackPortTypeinvokeResponseResponse17">
+                                    <bpel:correlations>
+                                        <bpel:correlation initiate="no" set="InvokePortTypeCorrelationSet19"/>
+                                    </bpel:correlations>
+                                </bpel:receive>
+                                <bpel:if xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"> 
+		<![CDATA[boolean($CallbackPortTypeinvokeResponseResponse17//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="Fault"])]]>
+	</bpel:condition>
+	<bpel:throw xmlns:fault1601895434584="http://opentosca.org/plans/invocationfault" faulVariable="CallbackPortTypeinvokeResponseResponse17" faultName="fault1601895434584:DockerEngine_InterfaceDockerEngine_removeContainer"/>
+</bpel:if>
+                                <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assign_CallbackPortTypeinvokeResponseResponse17"/>
+                            </sequence>
+                            <sequence name="compensation_MyTinyToDoDockerContainer_PROVISIONING_postPhase">
+                                <empty/>
+                            </sequence>
+                        </sequence>
+                        <eventHandlers/>
+                    </scope>
+                </compensationHandler>
+                <sequence name="MyTinyToDoDockerContainer_PROVISIONING_mainSequence">
+                    <sequence name="MyTinyToDoDockerContainer_PROVISIONING_prePhase">
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:POST accept="application/xml" contenttype="text/plain" request="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488" response="bpel4restlightVarResponse22" uri="$bpelvar[OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488]/nodetemplates/MyTinyToDoDockerContainer/instances"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="$assignName" validate="no">
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse22">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(//*[local-name()='url']/text())]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse22">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(codepoints-to-string(reverse(string-to-codepoints(substring-before(codepoints-to-string(reverse(string-to-codepoints($nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479))), '/')))))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479"/>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignSetNodeState1601895434591" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('INITIAL')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$MyTinyToDoDockerContainer_state_23]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="MyTinyToDoDockerContainer_state_23" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/state"/>
+</bpel:extensionActivity>
+                    </sequence>
+                    <sequence name="MyTinyToDoDockerContainer_PROVISIONING_provisioningPhase">
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignPortMapping" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[concat($_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerPort_toscaProperty1601895434479,',',$_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479)]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$dockerContainerPortMappings1601895434503_0]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignDockerContainerFileRef1601895434505" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string(concat(substring-before($input.payload//*[local-name()='instanceDataAPIUrl']/text(),'/servicetemplates'),'/content/artifacttemplates/http%253A%252F%252Fopentosca.org%252Fartifacttemplates/MyTinyToDo_DA/files/tinytodo.zip'))]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$dockerContainerFile1601895434505_1]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignNodeStateFor_startContainer_1601895434598" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('STARTING')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$MyTinyToDoDockerContainer_state_23]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="MyTinyToDoDockerContainer_state_23" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/state"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="AssignCreateEC2SIRequest" validate="no">
+	<bpel:copy>
+		<bpel:from>
+			<bpel:literal>
+				<impl:invokeOperationAsync xmlns:impl="http://siserver.org/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<impl:PlanCorrelationID/>
+					<impl:CsarID>MyTinyToDo_Bare_Docker.csar</impl:CsarID>
+					<impl:ServiceInstanceID/>
+					
+					<impl:ServiceTemplateIDNamespaceURI>http://opentosca.org/servicetemplates</impl:ServiceTemplateIDNamespaceURI>
+					<impl:ServiceTemplateIDLocalPart>MyTinyToDo_Bare_Docker</impl:ServiceTemplateIDLocalPart>
+					<impl:InterfaceName>InterfaceDockerEngine</impl:InterfaceName>
+					<impl:NodeTemplateID>DockerEngine</impl:NodeTemplateID>
+
+					<impl:OperationName>startContainer</impl:OperationName>
+					<impl:ReplyTo/>
+					<impl:MessageID>1601895434523</impl:MessageID>
+					<impl:Params>
+                                                <impl:Param>
+                                                    <impl:key>ContainerPorts</impl:key>
+                                                    <impl:value>value</impl:value>
+                                                </impl:Param>
+                                                <impl:Param>
+                                                    <impl:key>DockerEngineURL</impl:key>
+                                                    <impl:value>value</impl:value>
+                                                </impl:Param>
+                                                <impl:Param>
+                                                    <impl:key>ImageLocation</impl:key>
+                                                    <impl:value>value</impl:value>
+                                                </impl:Param>
+                                            </impl:Params>
+
+				</impl:invokeOperationAsync>
+			</bpel:literal>
+		</bpel:from>
+		<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6"/>
+	</bpel:copy>
+	<bpel:copy>
+  <bpel:from variable="dockerContainerPortMappings1601895434503_0"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="ContainerPorts"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="DockerEngineURL"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from variable="dockerContainerFile1601895434505_1"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="ImageLocation"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from part="payload" variable="input">
+      <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="CorrelationID"]]]></bpel:query>
+  </bpel:from>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="PlanCorrelationID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+<bpel:copy>
+  <bpel:from variable="OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488"/>
+  <bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="ServiceInstanceID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+
+
+<bpel:copy>
+  	<bpel:from>
+   					<bpel:literal>
+     					<wsa:ReplyTo xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        					<wsa:Address>http://localhost:9763/services/SIServerCallback</wsa:Address>
+     					</wsa:ReplyTo>
+   					</bpel:literal>
+ 				</bpel:from>
+ 				<bpel:to header="ReplyTo" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+ 				</bpel:to>
+			</bpel:copy>
+                            <bpel:copy>
+            	<bpel:from endpointReference="myRole" partnerLink="InvokePortTypePL5"/>
+            	<bpel:to header="ReplyTo" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+            	                    <bpel:query xmlns:wsa="http://www.w3.org/2005/08/addressing" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[/*[local-name()='Address']]]></bpel:query>
+
+            	</bpel:to>
+            </bpel:copy>
+                            <bpel:copy>
+	<bpel:from endpointReference="myRole" partnerLink="InvokePortTypePL5"/>
+	<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+		<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="ReplyTo" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		<![CDATA[concat('DockerEngine:InterfaceDockerEngine:startContainer:',current-dateTime())]]>
+	</bpel:from>
+	<bpel:to part="invokeOperationAsync" variable="InvokePortTypeinvokeOperationAsyncMessageRequest6">
+		<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()="MessageID" and namespace-uri()="http://siserver.org/schema"]]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                        </bpel:assign>
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:log xmlns:api="http://opentosca.org/api">asd</api:log>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="logMessage11"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="instanceDataLogMsg_1601895434534_10"/>
+				<bpel:to variable="logMessage11">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='log']]]>
+					</bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST request="logMessage11" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/logs"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                        <bpel:invoke xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" inputVariable="InvokePortTypeinvokeOperationAsyncMessageRequest6" name="invoke_InvokePortTypeinvokeOperationAsyncMessageRequest6" operation="invokeOperationAsync" partnerLink="InvokePortTypePL5" portType="ns1:InvokePortType">
+                            <bpel:correlations>
+                                <bpel:correlation initiate="yes" set="InvokePortTypeCorrelationSet9"/>
+                            </bpel:correlations>
+                        </bpel:invoke>
+                        <bpel:receive xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="receive_CallbackPortTypeinvokeResponseResponse7" operation="callback" partnerLink="InvokePortTypePL5" portType="ns1:CallbackPortType" variable="CallbackPortTypeinvokeResponseResponse7">
+                            <bpel:correlations>
+                                <bpel:correlation initiate="no" set="InvokePortTypeCorrelationSet9"/>
+                            </bpel:correlations>
+                        </bpel:receive>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignNodeState_startContainer_1601895434603" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('STARTED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$MyTinyToDoDockerContainer_state_23]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="MyTinyToDoDockerContainer_state_23" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/state"/>
+</bpel:extensionActivity>
+                        <bpel:if xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"> 
+		<![CDATA[boolean($CallbackPortTypeinvokeResponseResponse7//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="Fault"])]]>
+	</bpel:condition>
+	<bpel:throw xmlns:fault1601895434537="http://opentosca.org/plans/invocationfault" faulVariable="CallbackPortTypeinvokeResponseResponse7" faultName="fault1601895434537:DockerEngine_InterfaceDockerEngine_startContainer"/>
+</bpel:if>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assign_CallbackPortTypeinvokeResponseResponse7">
+                            <bpel:copy>
+                                <bpel:from part="invokeResponse" variable="CallbackPortTypeinvokeResponseResponse7">
+                                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="ContainerIP"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+                                </bpel:from>
+                                <bpel:to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479"/>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from part="invokeResponse" variable="CallbackPortTypeinvokeResponseResponse7">
+                                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()="Param" and namespace-uri()="http://siserver.org/schema"]/*[local-name()="key" and text()="ContainerID"]/following-sibling::*[local-name()="value"]]]></bpel:query>
+                                </bpel:from>
+                                <bpel:to variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479"/>
+                            </bpel:copy>
+                        </bpel:assign>
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:log xmlns:api="http://opentosca.org/api">asd</api:log>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="logMessage21"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="instanceDataLogMsg_1601895434581_20"/>
+				<bpel:to variable="logMessage21">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='log']]]>
+					</bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST request="logMessage21" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/logs"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:GET accept="application/xml" response="bpel4restlightVarResponse22" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignPropertyVarsToAnyElement1601895434606">
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerID' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerPort_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerPort' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerIP' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='Port' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                        </bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" request="bpel4restlightVarResponse22" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                    </sequence>
+                    <sequence name="MyTinyToDoDockerContainer_PROVISIONING_postPhase">
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:GET accept="application/xml" response="bpel4restlightVarResponse22" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignPropertyVarsToAnyElement1601895434613">
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerID_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerID' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerPort_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerPort' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='ContainerIP' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse22">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='Port' and namespace-uri()='http://opentosca.org/nodetypes/propertiesdefinition/winery']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                        </bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" request="bpel4restlightVarResponse22" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:log xmlns:api="http://opentosca.org/api">asd</api:log>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="logMessage25"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="instanceDataLogMsg_1601895434618_24"/>
+				<bpel:to variable="logMessage25">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='log']]]>
+					</bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST request="logMessage25" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/logs"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:CreateRelationshipTemplateInstanceRequest xmlns:api="http://opentosca.org/api" service-instance-id="asd" source-instance-id="asd" target-instance-id="asd"/>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="createRelationshipTemplateRequest34"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string($nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_1601895434479)]]></bpel:query>
+				</bpel:from>
+				<bpel:to variable="createRelationshipTemplateRequest34">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$createRelationshipTemplateRequest34/@*[local-name()='source-instance-id']]]></bpel:query>
+				</bpel:to>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string($nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479)]]></bpel:query>
+				</bpel:from>
+				<bpel:to variable="createRelationshipTemplateRequest34">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$createRelationshipTemplateRequest34/@*[local-name()='target-instance-id']]]></bpel:query>
+				</bpel:to>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string($OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488)]]></bpel:query>
+				</bpel:from>
+				<bpel:to variable="createRelationshipTemplateRequest34">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$createRelationshipTemplateRequest34/@*[local-name()='service-instance-id']]]></bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST accept="application/xml" contenttype="application/xml" request="createRelationshipTemplateRequest34" response="bpel4restlightVarResponse32" uri="$bpelvar[OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488]/relationshiptemplates/con_17/instances"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="$assignName" validate="no">
+    <bpel:copy>		
+		<bpel:from variable="bpel4restlightVarResponse32">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(//*[local-name()='url']/text())]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="relationshipInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse32">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(codepoints-to-string(reverse(string-to-codepoints(substring-before(codepoints-to-string(reverse(string-to-codepoints($relationshipInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479))), '/')))))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="relationInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479"/>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignInitRelationState1601895434661" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('INITIAL')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$con_17_state_33]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="con_17_state_33" uri="$bpelvar[relationshipInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479]/state"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignFinalNodeState1601895434665" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('CREATED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$con_17_state_33]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="con_17_state_33" uri="$bpelvar[relationshipInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_con_17_1601895434479]/state"/>
+</bpel:extensionActivity>
+                    </sequence>
+                </sequence>
+                <eventHandlers/>
+            </scope>
+            <scope name="DockerEngine_PROVISIONING_scope">
+                <sources>
+                    <source linkName="seqEdge1"/>
+                </sources>
+                <faultHandlers>
+                    <catchAll>
+                        <scope name="fault_DockerEngine_PROVISIONING_scope">
+                            <sequence name="fault_DockerEngine_PROVISIONING_mainSequence">
+                                <sequence name="fault_DockerEngine_PROVISIONING_prePhase">
+                                    <empty/>
+                                </sequence>
+                                <sequence name="fault_DockerEngine_PROVISIONING_provisioningPhase">
+                                    <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignSetNodeState1601895434649" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('ERROR')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$DockerEngine_state_31]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                                    <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="DockerEngine_state_31" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479]/state"/>
+</bpel:extensionActivity>
+                                </sequence>
+                                <sequence name="fault_DockerEngine_PROVISIONING_postPhase">
+                                    <rethrow/>
+                                </sequence>
+                            </sequence>
+                            <eventHandlers/>
+                        </scope>
+                    </catchAll>
+                </faultHandlers>
+                <compensationHandler>
+                    <scope name="compensation_DockerEngine_PROVISIONING_scope">
+                        <sequence name="compensation_DockerEngine_PROVISIONING_mainSequence">
+                            <sequence name="compensation_DockerEngine_PROVISIONING_prePhase">
+                                <empty/>
+                            </sequence>
+                            <sequence name="compensation_DockerEngine_PROVISIONING_provisioningPhase">
+                                <empty/>
+                            </sequence>
+                            <sequence name="compensation_DockerEngine_PROVISIONING_postPhase">
+                                <empty/>
+                            </sequence>
+                        </sequence>
+                        <eventHandlers/>
+                    </scope>
+                </compensationHandler>
+                <sequence name="DockerEngine_PROVISIONING_mainSequence">
+                    <sequence name="DockerEngine_PROVISIONING_prePhase">
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:POST accept="application/xml" contenttype="text/plain" request="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488" response="bpel4restlightVarResponse27" uri="$bpelvar[OpenTOSCAContainerAPIServiceTemplateURL16018954344881601895434488]/nodetemplates/DockerEngine/instances"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="$assignName" validate="no">
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse27">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(//*[local-name()='url']/text())]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479"/>
+	</bpel:copy>
+	<bpel:copy>
+		<bpel:from variable="bpel4restlightVarResponse27">
+			<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[string(codepoints-to-string(reverse(string-to-codepoints(substring-before(codepoints-to-string(reverse(string-to-codepoints($nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479))), '/')))))]]></bpel:query>
+		</bpel:from>
+		<bpel:to variable="nodeInstanceID__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479"/>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignSetNodeState1601895434632" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('INITIAL')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$DockerEngine_state_28]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="DockerEngine_state_28" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479]/state"/>
+</bpel:extensionActivity>
+                    </sequence>
+                    <sequence name="DockerEngine_PROVISIONING_provisioningPhase">
+                        <empty/>
+                    </sequence>
+                    <sequence name="DockerEngine_PROVISIONING_postPhase">
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignFinalNodeState1601895434638" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('STARTED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$DockerEngine_state_28]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="text/plain" contenttype="text/plain" request="DockerEngine_state_28" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479]/state"/>
+</bpel:extensionActivity>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:GET accept="application/xml" response="bpel4restlightVarResponse27" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignPropertyVarsToAnyElement1601895434641">
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineURL_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse27">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='DockerEngineURL' and namespace-uri()='http://opentosca.org/nodetypes/properties']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_DockerEngineCertificate_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse27">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='DockerEngineCertificate' and namespace-uri()='http://opentosca.org/nodetypes/properties']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                            <bpel:copy>
+	<bpel:from variable="_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_State_toscaProperty1601895434479">
+	</bpel:from>
+	<bpel:to variable="bpel4restlightVarResponse27">
+	    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='State' and namespace-uri()='http://opentosca.org/nodetypes/properties']]]></bpel:query>
+	</bpel:to>
+</bpel:copy>
+                        </bpel:assign>
+                        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" request="bpel4restlightVarResponse27" uri="$bpelvar[nodeInstanceURL__http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_DockerEngine_1601895434479]/properties"/>
+</bpel:extensionActivity>
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:log xmlns:api="http://opentosca.org/api">asd</api:log>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="logMessage30"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="instanceDataLogMsg_1601895434646_29"/>
+				<bpel:to variable="logMessage30">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='log']]]>
+					</bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST request="logMessage30" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/logs"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                    </sequence>
+                </sequence>
+                <eventHandlers/>
+            </scope>
+            <scope name="con_17_PROVISIONING_scope">
+                <targets>
+                    <joinCondition>$seqEdge1</joinCondition>
+                    <target linkName="seqEdge1"/>
+                </targets>
+                <sources>
+                    <source linkName="seqEdge0"/>
+                </sources>
+                <faultHandlers>
+                    <catchAll>
+                        <scope name="fault_con_17_PROVISIONING_scope">
+                            <sequence name="fault_con_17_PROVISIONING_mainSequence">
+                                <sequence name="fault_con_17_PROVISIONING_prePhase">
+                                    <empty/>
+                                </sequence>
+                                <sequence name="fault_con_17_PROVISIONING_provisioningPhase">
+                                    <empty/>
+                                </sequence>
+                                <sequence name="fault_con_17_PROVISIONING_postPhase">
+                                    <rethrow/>
+                                </sequence>
+                            </sequence>
+                            <eventHandlers/>
+                        </scope>
+                    </catchAll>
+                </faultHandlers>
+                <compensationHandler>
+                    <scope name="compensation_con_17_PROVISIONING_scope">
+                        <sequence name="compensation_con_17_PROVISIONING_mainSequence">
+                            <sequence name="compensation_con_17_PROVISIONING_prePhase">
+                                <empty/>
+                            </sequence>
+                            <sequence name="compensation_con_17_PROVISIONING_provisioningPhase">
+                                <empty/>
+                            </sequence>
+                            <sequence name="compensation_con_17_PROVISIONING_postPhase">
+                                <empty/>
+                            </sequence>
+                        </sequence>
+                        <eventHandlers/>
+                    </scope>
+                </compensationHandler>
+                <sequence name="con_17_PROVISIONING_mainSequence">
+                    <sequence name="con_17_PROVISIONING_prePhase">
+                        <empty/>
+                    </sequence>
+                    <sequence name="con_17_PROVISIONING_provisioningPhase">
+                        <empty/>
+                    </sequence>
+                    <sequence name="con_17_PROVISIONING_postPhase">
+                        <bpel:scope xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+	<bpel:sequence>
+		<bpel:assign>
+			<bpel:copy>
+				<bpel:from>
+					<bpel:literal>
+						<api:log xmlns:api="http://opentosca.org/api">asd</api:log>
+					</bpel:literal>
+				</bpel:from>
+				<bpel:to variable="logMessage36"/>
+			</bpel:copy>
+			<bpel:copy>
+				<bpel:from variable="instanceDataLogMsg_1601895434667_35"/>
+				<bpel:to variable="logMessage36">
+					<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[//*[local-name()='log']]]>
+					</bpel:query>
+				</bpel:to>
+			</bpel:copy>
+		</bpel:assign>
+		<bpel:extensionActivity xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+			<bpel4RestLight:POST request="logMessage36" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/logs"/>
+		</bpel:extensionActivity>
+	</bpel:sequence>
+</bpel:scope>
+                    </sequence>
+                </sequence>
+                <eventHandlers/>
+            </scope>
+        </flow>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434673" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('CREATED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest1601895434673]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest1601895434673" uri="$bpelvar[OpenTOSCAContainerAPIServiceInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+        <bpel:assign xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" name="assignServiceInstanceState1601895434682" validate="no">
+	<bpel:copy>
+		<bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+			<![CDATA[string('FINISHED')]]>
+		</bpel:from>
+		<bpel:to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+		    <![CDATA[$bpel4restlightVarRequest1601895434682]]>
+		</bpel:to>
+	</bpel:copy>
+</bpel:assign>
+        <bpel:extensionActivity xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpel4RestLight="http://www.apache.org/ode/bpel/extensions/bpel4restlight">
+	<bpel4RestLight:PUT accept="application/xml" contenttype="text/plain" request="bpel4restlightVarRequest1601895434682" uri="$bpelvar[OpenTOSCAContainerAPIPlanInstanceURL16018954344881601895434488]/state"/>
+</bpel:extensionActivity>
+        <assign>
+            <bpel:copy xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[concat('http://',$_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_ContainerIP_toscaProperty1601895434479, ':',$_http___opentosca_org_servicetemplates_MyTinyToDo_Bare_Docker_MyTinyToDoDockerContainer_Port_toscaProperty1601895434479)]]></bpel:from>
+                <bpel:to part="payload" variable="output">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='selfserviceApplicationUrl']]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+  <bpel:from variable="OpenTOSCAContainerAPIServiceInstanceID16018954344881601895434488"/>
+  <bpel:to part="payload" variable="output">
+    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[//*[local-name()='instanceId']]]></bpel:query>
+  </bpel:to>
+</bpel:copy>
+            <bpel:copy xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                <bpel:from header="ReplyTo" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[string(/*[local-name()='Address'])]]></bpel:query>
+                </bpel:from>
+                <bpel:to endpointReference="partnerRole" partnerLink="client"/>
+            </bpel:copy>
+        </assign>
+        <invoke inputVariable="output" name="callbackClient" operation="onResult" partnerLink="client" portType="tns:MyTinyToDo_Bare_Docker_buildPlanCallback"/>
+    </sequence>
+    <import importType="http://www.w3.org/2001/XMLSchema" location="opentoscaapischema.xsd" namespace="http://opentosca.org/api"/>
+    <import importType="http://schemas.xmlsoap.org/wsdl/" location="invoker33066774016399173008.wsdl" namespace="http://siserver.org/wsdl"/>
+    <import importType="http://www.w3.org/2001/XMLSchema" location="invoker21254587106302161962.xsd" namespace="http://siserver.org/schema"/>
+    <import importType="http://schemas.xmlsoap.org/wsdl/" location="invoker138729611486024554531.wsdl" namespace="http://siserver.org/wsdl"/>
+    <import importType="http://www.w3.org/2001/XMLSchema" location="invoker12130710630929736320.xsd" namespace="http://siserver.org/schema"/>
+    <import importType="http://schemas.xmlsoap.org/wsdl/" location="MyTinyToDo_Bare_Docker_buildPlan.wsdl" namespace="http://opentosca.org/servicetemplates_buildPlan"/>
+</process>
