@@ -1,6 +1,6 @@
 # BPMN Plan Visualizer
 
-Visualisiert BPEL Bereitstellungapläne die 
+Visualisiert BPEL Bereitstellungspläne die 
 mit dem OpenTOSCA Plangenerator erstellt wurden.
 
 # Documentation
