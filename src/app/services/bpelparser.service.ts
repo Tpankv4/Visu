@@ -1,38 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { PageParameter } from '../model/page-parameter';
-import { Node } from '../model/workflow/node';
-import { BroadcastService } from './broadcast.service';
-import { HttpHeaders } from '@angular/common/http';
 import {HttpClient} from '@angular/common/http';
-//import * as xpath from 'xpath-ts';
-//import * as xml2js from 'xml2js';
-//import {parseString} from 'xml2js';
-//import * as dom from 'xmldom';
-//import { DOMParserImpl as dom } from 'xmldom';
 import * as sax from 'sax-ts';
-//import * as saxpath from 'saxpath';
-//import * as sax from 'sax';
-//import * as sts from 'string-to-stream';
-//import * as xos from 'xml-object-stream-sax';
 import { Stack } from 'stack-typescript';
 import {BpmnCreator} from './BpmnCreator.service';
 
 
 @Injectable()
 export class BpelService {
-    private repositoryURL: string;
-    private namespace: string;
-    private serviceTemplateId: string;
-    private plan: string;
 
     private modeler: any;
     
 
-    constructor(private broadcastService: BroadcastService,
-                private http: HttpClient,
-                private bpmncreator: BpmnCreator){
-    
+    constructor(private http: HttpClient,
+                private bpmncreator: BpmnCreator){ 
     }
 
     parseBpel(modeler: any) {
@@ -808,11 +789,10 @@ export class BpelService {
              }
            });
          });
-         console.log("array mit richtiger reihenfolge und allen daten:");
-         console.log(retarr);
+         //console.log("array mit richtiger reihenfolge und allen daten:");
+         //console.log(retarr);
 
          this.bpmncreator.createBpmn(this.modeler, retarr);
-         //this.bpmncreator.testen(this.modeler, retarr);
 
     }
 

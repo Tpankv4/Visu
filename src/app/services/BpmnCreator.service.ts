@@ -1,22 +1,11 @@
 import { Injectable } from '@angular/core';
-import {is} from 'bpmn-js/lib/util/ModelUtil.js'; //modelUtil?
+import {is} from 'bpmn-js/lib/util/ModelUtil.js'; //modelUtil
 
 @Injectable()
 export class BpmnCreator {
 
   constructor() {  
   }
-
-   testen(modeler: any, dataArray: any){
-    const elementFactory = modeler.get('elementFactory');
-    const canvas = modeler.get('canvas');
-    const modeling = modeler.get('modeling');
-
-    const shape3 = elementFactory.createParticipantShape();
-
-    modeling.createShape(shape3, {x:0,y :0}, canvas.getRootElement());
-
-   }
 
    /**
     * Create a bpmn diagram with given data
@@ -652,7 +641,7 @@ export class BpmnCreator {
           eventDefinitionType: 'bpmn:ErrorEventDefinition'
         });
         let a = modeling.createShape(errorBoundaryEvent, { x: subprocesses[j].parent.x, y: subprocesses[j].y + (subprocesses[j].height/2) }, subprocesses[j].parent, { attach: true });
-        //modeling.connect(a, subprocesses[j]); geht nicht.. rules...
+        //modeling.connect(a, subprocesses[j]); geht nicht wegen rules...
 
       }else if(subprocesses[j].businessObject.name.includes("compensation_")){
         let compensationBoundaryEvent = elementFactory.createShape({
@@ -720,9 +709,5 @@ export class BpmnCreator {
     }
     return returnstring;
   }
-
-   /*
-  createTest(){
- }*/
  
 }

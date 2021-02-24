@@ -55,14 +55,24 @@ export class WineryService {
             zipFile.generateAsync({type:"blob"})
             .then(function(content) {
                 // see FileSaver.js
-                saveAs(content, "example.zip");
+                saveAs(content, "planAsSVG.zip");
+            });
+    }
+
+    public downloadXML(xml: any){
+        let zipFile: JSZip = new JSZip();
+            zipFile.file("plan.bpmn", xml);
+            zipFile.generateAsync({type:"blob"})
+            .then(function(content) {
+                // see FileSaver.js
+                saveAs(content, "planAsXML.zip");
             });
     }
 
 
     public save(data: string) {
-        console.log(data);
-        console.log(this.namespace);
+        //console.log(data);
+        //console.log(this.namespace);
         const url = 'servicetemplates/' + this.encode(this.namespace)
             + '/' + this.encode(this.serviceTemplateId) + '/plans/' + this.encode(this.plan) + '/file';
         let xml: string;
@@ -91,19 +101,19 @@ export class WineryService {
             '</bpmndi:BPMNPlane>\n' +
             '</bpmndi:BPMNDiagram>\n' +
             '</bpmn:definitions>';
-        console.log(JSON.stringify(xml));
+        //console.log(JSON.stringify(xml));
         
         
         const requestData = '-----------------------------7da24f2e50046\r\n'
             + 'Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\n'
             + 'Content-type: plain/text\r\n\r\n'
             + data + '\r\n-----------------------------7da24f2e50046--\r\n';
-        console.log(this.getFullUrl(url));
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xml, "text/xml");
-        console.log(xmlDoc);
-        console.log(xmlDoc.getElementsByTagName('bpmn:startEvent'));
-        console.log(xmlDoc.getElementsByTagName('bpmn:sequenceFlow')[0].getAttribute('sourceRef'));
+        //console.log(this.getFullUrl(url));
+        //let parser = new DOMParser();
+        //let xmlDoc = parser.parseFromString(xml, "text/xml");
+        //console.log(xmlDoc);
+        //console.log(xmlDoc.getElementsByTagName('bpmn:startEvent'));
+        //console.log(xmlDoc.getElementsByTagName('bpmn:sequenceFlow')[0].getAttribute('sourceRef'));
         const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data; boundary=---------------------------7da24f2e50046' });
 
         this.httpService.put(this.getFullUrl(url), requestData, { headers: headers })
@@ -115,10 +125,10 @@ export class WineryService {
             + '/' + this.encode(this.serviceTemplateId) + '/plans/' + this.encode(this.plan) + '/file';
         this.httpService.get(this.getFullUrl(url)).subscribe(response => {
             const nodes = JSON.stringify(response) === '{}' ? [] : <Node[]>response;
-            console.log(this.broadcastService.planModel);
-            console.log(nodes);
+            //console.log(this.broadcastService.planModel);
+            //console.log(nodes);
             this.broadcastService.broadcast(this.broadcastService.planModel, nodes);
-            console.log("hier");
+            //console.log("hier");
             return nodes;});
     }
 
@@ -127,10 +137,10 @@ export class WineryService {
             + '/' + this.encode(this.serviceTemplateId) + '/plans/' + this.encode(this.plan) + '/file';
         this.httpService.get(this.getFullUrl(url)).subscribe(response => {
             const nodes = JSON.stringify(response) === '{}' ? [] : <Node[]>response;
-            console.log(this.broadcastService.planModel);
-            console.log(nodes);
+            //console.log(this.broadcastService.planModel);
+            //console.log(nodes);
             this.broadcastService.broadcast(this.broadcastService.planModel, nodes);
-            console.log("hier");
+            //console.log("hier");
             modeler.importXML(nodes);
             return nodes;});
     }
