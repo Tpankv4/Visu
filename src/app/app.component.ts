@@ -73,9 +73,13 @@ export class AppComponent implements OnInit {
     
   }
 
-  
+  /**
+   * start visualization
+   */
   visualize(){
-    this.bpelservice.parseBpel(this.modeler);
+    const url1 = '/assets/MyTinyToDo_Bare_Docker_buildPlan.bpel';
+    const url2 = '/assets/MyTinyToDo_Docker_On_VM_buildPlan.bpel';
+    this.bpelservice.parseBpel(this.modeler, url1);
   
   }
 
@@ -105,6 +109,9 @@ export class AppComponent implements OnInit {
     
   }
 
+  /**
+   * save the plans as XML
+   */
   save1(): void {
     this.modeler.saveXML((err: any, xml: any) => {console.log('Result of saving XML: ', err, xml);
     //let temp = JSON.stringify(xml);
@@ -113,6 +120,10 @@ export class AppComponent implements OnInit {
   });
   
   }
+
+  /**
+   * save the plan as SVG
+   */
   save2(): void {
     this.modeler.saveSVG((err: any, svg: any) => {
     this.wineryService.downloadSVG(svg);

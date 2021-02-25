@@ -5,9 +5,9 @@ import { WineryService } from './services/winery.service';
 import { BroadcastService } from './services/broadcast.service';
 import { AppComponent } from './app.component';
 import { HttpService } from './util/http.service';
-import {HttpClientModule, HttpClient, HttpHandler} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {BpelService} from './services/bpelparser.service';
-import {BpmnCreator} from './services/BpmnCreator.service';
+import {BpmnCreator} from './services/bpmncreator.service';
 
 
 

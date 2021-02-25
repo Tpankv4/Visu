@@ -3,29 +3,36 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import * as sax from 'sax-ts';
 import { Stack } from 'stack-typescript';
-import {BpmnCreator} from './BpmnCreator.service';
+import {BpmnCreator} from './bpmncreator.service';
 
 
 @Injectable()
 export class BpelService {
 
     private modeler: any;
+    private url: any;
     
 
     constructor(private http: HttpClient,
                 private bpmncreator: BpmnCreator){ 
     }
 
-    parseBpel(modeler: any) {
+    /**
+     * Passes the plan to the parser 
+     * @param modeler BPMN modeler for visualisation
+     * @param url plan to be parsed
+     */
+    parseBpel(modeler: any, url: any) {
       this.modeler = modeler;
+      this.url = url;
       this.fetchBpel();
     }
 
-    fetchBpel(){
-        const url2 = '/assets/MyTinyToDo_Bare_Docker_buildPlan.bpel';
-        const url3 = '/assets/MyTinyToDo_Docker_On_VM_buildPlan.bpel';
-        
-        this.http.get(url2, {
+    /**
+     * fetch the plan
+     */
+    fetchBpel(){      
+        this.http.get(this.url, {
             headers: {observe: 'response'}, responseType: 'text' 
           }).subscribe(
             (y: any) => {
@@ -34,6 +41,10 @@ export class BpelService {
             });        
     }
 
+    /**
+     * Handles errors
+     * @param err error to be handled
+     */
     handleError2(err: any) {
         if (err) {
           console.warn('Ups, error: ', err);
@@ -45,7 +56,7 @@ export class BpelService {
     * @param x bpel to be parsed
     */
     bpelspass(x){
-        console.log('Fetched bpel, now importing: ', x);
+        console.log('Fetched bpel, now parsing: ', x);
         let xml = x;
 
         const strict: boolean = true; // change to false for HTML parsing
