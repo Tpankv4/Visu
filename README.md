@@ -11,3 +11,10 @@ To run this project with live-reload etc:
     ng serve  
     
 Then look at http://localhost:4200.
+
+To run this project with docker:
+
+    docker build -t visu .
+    docker run -p 4200:80 visu
+
+Then look at http://localhost:4200.
